@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 link = 'https://www.sympla.com.br/eventos/joao-pessoa-pb/show-musica-festa'
 response = requests.get(link)
 
+soup = BeautifulSoup(response.text, 'html.parser')
+
 # Find Title of the event
 soup.find_all('h3', class_='pn67h1c')
 
@@ -17,4 +19,3 @@ items = soup.find_all('div', class_='qtfy415 qtfy413 qtfy416')
 for item in items:
     print(item.get_text())
 
-soup = BeautifulSoup(response.text, 'html.parser')
