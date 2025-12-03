@@ -15,7 +15,16 @@ soup.find_all('p', class_='pn67h1e')
 # Find Div element for event date and time
 soup.find_all('div', class_='qtfy415 qtfy413 qtfy416')
 
-items = soup.find_all('div', class_='qtfy415 qtfy413 qtfy416')
-for item in items:
-    print(item.get_text())
+
+title = soup.find_all('h3', class_='pn67h1c')
+for item in title:  
+    print("Title: " + item.get_text())
+    
+location = soup.find_all('p', class_='pn67h1e')
+for item in location:
+    print("Location: " + item.get_text())
+
+dates = soup.find_all('div', class_='qtfy415 qtfy413 qtfy416')
+for item in dates:
+    print("Date: " + item.get_text())
 
