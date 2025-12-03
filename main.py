@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 ####################################################################################
 ##                                                                                ##
 ##   Scrapper for events in Sympla website                                        ##
@@ -13,16 +14,22 @@
 ####################################################################################
 import requests
 from bs4 import BeautifulSoup
+#import sys
+#import io
+
+# Fix Windows console encoding for UTF-8
+#sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 link = 'https://www.sympla.com.br/eventos/joao-pessoa-pb/show-musica-festa'
 response = requests.get(link)
 response.encoding = 'utf-8'
-soup = BeautifulSoup(response.text, 'html.parser')
+soup = BeautifulSoup(response.content.decode('utf-8'), 'html.parser')
 
 
 # Find main element card which is base for other elements
 cards = soup.find_all('a', class_='sympla-card')
 
+## JUST TEST SLOOP
 # Find Title of the event
 #title = soup.find_all('h3', class_='pn67h1c')
 
